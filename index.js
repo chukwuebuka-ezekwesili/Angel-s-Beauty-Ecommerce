@@ -16,10 +16,6 @@ app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Angel's E-commerce");
 });
-
-// app.use(
-//     "/api/v1/cloudSa-africa",
-//   );
   
   const PORT = process.env.PORT || 3000;
   
