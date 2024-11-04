@@ -3,7 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan'
 import dotenv from "dotenv";
 import mongoose from 'mongoose'
-
+import authRoute from './src/routes/auth.route.js'
 dotenv.config();
 
 const app = express()
@@ -13,7 +13,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
+
+app.use("/api/v1/angels-ecommerce", authRoute)
+
+app.get("/api/v1/angels-ecommerce", (req, res) => {
   res.send("Angel's E-commerce");
 });
   
