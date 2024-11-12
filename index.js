@@ -4,6 +4,7 @@ import morgan from 'morgan'
 import dotenv from "dotenv";
 import mongoose from 'mongoose'
 import authRoute from './src/routes/auth.route.js'
+import categoryRoute from './src/routes/category.route.js';
 dotenv.config();
 
 const app = express()
@@ -15,6 +16,7 @@ app.use(morgan("dev"));
 
 
 app.use("/api/v1/angels-ecommerce", authRoute)
+app.use("/api/v1/angels-ecommerce", categoryRoute);
 
 app.get("/api/v1/angels-ecommerce", (req, res) => {
   res.send("Angel's E-commerce");

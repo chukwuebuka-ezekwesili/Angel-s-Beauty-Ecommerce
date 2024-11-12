@@ -70,8 +70,6 @@ export const userLogin = async (req, res) => {
       .json({ success: false, message: "Password is required" });
   }
 
-  console.log("password", password);
-
   // check if user exist in our DB
   const user = await UserSchema.findOne({ email });
 
@@ -88,8 +86,10 @@ export const userLogin = async (req, res) => {
       .json({ success: false, message: "Invalid credentials" });
   }
 
+  console.log("token",process.env.JWT_SECRET_KEY);
+
   // generate jwt token
-  const token = jwt.sign({ user: user._id  }, process.env.JWT_SECRET_KEY, {
+  const token = jwt.sign({ id: user._id  }, process.env.JWT_SECRET_KEY, {
     expiresIn: "7d",
   });
 
