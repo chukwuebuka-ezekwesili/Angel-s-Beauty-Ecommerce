@@ -21,7 +21,7 @@ export const adminMiddleware = async (req, res, next) => {
         .json({ success: false, message: "Unauthorized, token not provided" });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     const user = await UserSchema.findById(decoded.id);
     
